@@ -10,7 +10,7 @@
     'id' => 'edit-form',
     'clientOptions' => [
         'validateOnSubmit' => true
-    ]
+    ],
 ]); ?>
 <?= $form->errorSummary($admAttribute, null, null, ['class'=>'alert alert-dismissible alert-danger form-error']); ?>
 <div class="form-group label-floating">
@@ -29,5 +29,5 @@
     <?= $form->error($admAttribute, 'type'); ?>
 </div>
 
-<?= CHtml::submitButton('Создать', ['class' => 'btn btn-primary']); ?>
+<?= CHtml::submitButton('Сохранить', ['class' => 'btn btn-primary']); ?>
 <?php $this->endWidget(); ?>

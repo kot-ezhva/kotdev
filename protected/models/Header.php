@@ -1,22 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "adm_attribute".
+ * This is the model class for table "header".
  *
- * The followings are the available columns in table 'adm_attribute':
- * @property integer $id_attribute
- * @property integer $id_block
- * @property string $name
- * @property string $type
+ * The followings are the available columns in table 'header':
+ * @property integer $id_header
+ * @property string $email
+ * @property string $text
+ * @property integer $phone
  */
-class AdmAttribute extends CActiveRecord
+class Header extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'adm_attribute';
+		return 'header';
 	}
 
 	/**
@@ -27,12 +27,12 @@ class AdmAttribute extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_block, name, type', 'required'),
-			array('id_block', 'numerical', 'integerOnly'=>true),
-			array('name, type', 'length', 'max'=>255),
+			array('phone', 'numerical', 'integerOnly'=>true),
+			array('email', 'length', 'max'=>255),
+			array('text', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_attribute, id_block, name, type', 'safe', 'on'=>'search'),
+			array('id_header, email, text, phone', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -43,9 +43,8 @@ class AdmAttribute extends CActiveRecord
 	{
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
-		return [
-			'admBlock' => [self::BELONGS_TO, 'AdmBlock', 'id_block'],
-		];
+		return array(
+		);
 	}
 
 	/**
@@ -54,10 +53,10 @@ class AdmAttribute extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id_attribute' => 'Id Attribute',
-			'id_block' => 'Id Block',
-			'name' => 'Поле в таблице',
-			'type' => 'Тип поля',
+			'id_header' => 'Id Header',
+			'email' => 'Email',
+			'text' => 'Text',
+			'phone' => 'Phone',
 		);
 	}
 
@@ -79,10 +78,10 @@ class AdmAttribute extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id_attribute',$this->id_attribute);
-		$criteria->compare('id_block',$this->id_block);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('type',$this->type,true);
+		$criteria->compare('id_header',$this->id_header);
+		$criteria->compare('email',$this->email,true);
+		$criteria->compare('text',$this->text,true);
+		$criteria->compare('phone',$this->phone);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -93,39 +92,10 @@ class AdmAttribute extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return AdmAttribute the static model class
+	 * @return Header the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
-	}
-
-	public function getType($pk, $fieldName)
-	{
-		$admAttribute = AdmAttribute::model()->findByAttributes([
-			'id_block' => $pk,
-			'name' => $fieldName,
-		]);
-		return $admAttribute->type;
-	}
-
-	public function convertTypeToBase($str)
-	{
-		$type = "string";
-		switch($str){
-			case "int" :
-				$type = "integer";
-				break;
-			case "string" :
-				$type = "string";
-				break;
-			case "image" :
-				$type = "integer";
-				break;
-			case "text" :
-				$type = "text";
-				break;
-		}
-		return $type;
 	}
 }

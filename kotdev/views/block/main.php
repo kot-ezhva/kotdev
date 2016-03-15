@@ -7,23 +7,25 @@
 <div class="b-block col-xs-12">
     <?php foreach ($blocks as $block) : ?>
         <div class="item row">
-            <div class="col-xs-10">
+            <div class="col-xs-9">
                 <p class="name">
                     <?= 'Блок "' . $block->name . '"' ?>
                 </p>
+            </div>
+            <div class="col-xs-1">
+                <?= CHtml::link(
+                    'Свойства',
+                    [
+                        'attribute/list',
+                        'id' => $block->primaryKey,
+                    ]
+                ); ?>
             </div>
             <div class="col-xs-2 text-right">
                 <?= CHtml::link(
                     '<i class="material-icons">mode_edit</i>',
                     [
-                        'adm/attributes',
-                        'id' => $block->primaryKey,
-                    ]
-                ); ?>
-                <?= CHtml::link(
-                    '<i class="material-icons">mode_edit</i>',
-                    [
-                        'adm/edit',
+                        'block/edit',
                         'id' => $block->primaryKey,
                     ]
                     );
@@ -32,7 +34,7 @@
                     echo CHtml::link(
                         '<i class="material-icons">visibility</i>',
                         [
-                            'adm/setvisible',
+                            'block/setvisible',
                             'id' => $block->primaryKey,
                             'vis' => true
                         ]
@@ -41,7 +43,7 @@
                     echo CHtml::link(
                         '<i class="material-icons">visibility_off</i>',
                         [
-                            'adm/setvisible',
+                            'block/setvisible',
                             'id' => $block->primaryKey,
                             'vis' => false
                         ]
@@ -50,5 +52,5 @@
             </div>
         </div>
     <?php endforeach; ?>
-    <?= CHtml::link('<i class="material-icons">add</i>', ['adm/create'], ['class' => 'btn btn-info btn-fab add-block']) ?>
+    <?= CHtml::link('<i class="material-icons">add</i>', ['block/create'], ['class' => 'btn btn-info btn-fab add-block']) ?>
 </div>

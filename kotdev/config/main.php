@@ -5,7 +5,7 @@ $kotdevConfig = array(
     //'basePath' => dirname(__FILE__) . '/../../protected',
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '../',
     'language' => 'ru',
-    'defaultController' => 'adm/main',
+    'defaultController' => 'block',
 
     // preloading 'log' component
     'preload' => array('log'),
@@ -18,12 +18,11 @@ $kotdevConfig = array(
     ],
 
     'modules' => array(
-        'gii' => array(
+        /*'gii' => array(
             'class' => 'system.gii.GiiModule',
             'password' => '123',
             'ipFilters' => array('127.0.0.1', '::1'),
-        ),
-
+        ),*/
     ),
 
     'components' => array(

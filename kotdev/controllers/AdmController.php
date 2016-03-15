@@ -12,10 +12,22 @@ class AdmController extends CController
 
     public function actionCreate()
     {
-        $block = new AdmBlock();
-        $block->save();
-        echo 1;
+        $admBlock = new AdmBlock();
+        if (isset($_POST['AdmBlock'])) {
+            $admBlock->attributes = $_POST['AdmBlock'];
+            if ($admBlock->save()) {
+                $pkName = "id_" . $admBlock->table_name;
+                Yii::app()->db->createCommand(
+                    "CREATE TABLE " . $admBlock->table_name . "(
+                      " . $pkName . " INT(11) NOT NULL AUTO_INCREMENT,
+                      PRIMARY KEY (" . $pkName . ")); ")->execute();
 
+                $this->redirect($this->createUrl('adm/main'));
+            }
+        }
+        $this->render('create_block', [
+            'admBlock' => $admBlock,
+        ]);
     }
 
     public function actionSetVisible($id = null, $vis = null)
@@ -43,6 +55,7 @@ class AdmController extends CController
             $this->actionSEdit($modelName);
         }
     }
+
     public function actionSEdit($modelName)
     {
         $model = CActiveRecord::model($modelName)->find();
@@ -50,6 +63,32 @@ class AdmController extends CController
         $this->render('single_edit', [
             'model' => $model,
             'block' => $block,
+        ]);
+    }
+
+    public function actionAttributes($id)
+    {
+        $attributes = AdmAttribute::model()->findAllByAttributes([
+            'id_block' => $id,
+        ]);
+        $this->render('attributes_list', [
+            'attributes' => $attributes,
+            'idBlock' => $id,
+        ]);
+    }
+
+    public function actionAddAttribute($idBlock)
+    {
+        $admAttribute = new AdmAttribute();
+        if (isset($_POST['AdmAttribute'])) {
+            $admAttribute->id_block = $idBlock;
+            $admAttribute->attributes = $_POST['AdmAttribute'];
+            if ($admAttribute->save()) {
+                $this->redirect($this->createUrl('adm/main', []));
+            }
+        }
+        $this->render('create_attribute', [
+            'admAttribute' => $admAttribute,
         ]);
     }
 }

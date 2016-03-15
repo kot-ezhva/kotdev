@@ -16,6 +16,13 @@
                 <?= CHtml::link(
                     '<i class="material-icons">mode_edit</i>',
                     [
+                        'adm/attributes',
+                        'id' => $block->primaryKey,
+                    ]
+                ); ?>
+                <?= CHtml::link(
+                    '<i class="material-icons">mode_edit</i>',
+                    [
                         'adm/edit',
                         'id' => $block->primaryKey,
                     ]
@@ -43,5 +50,5 @@
             </div>
         </div>
     <?php endforeach; ?>
-    <?= CHtml::link('<i class="material-icons">add</i>', 'adm/create', ['class' => 'btn btn-info btn-fab add-block']) ?>
+    <?= CHtml::link('<i class="material-icons">add</i>', ['adm/create'], ['class' => 'btn btn-info btn-fab add-block']) ?>
 </div>

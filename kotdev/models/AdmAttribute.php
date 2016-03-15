@@ -56,8 +56,8 @@ class AdmAttribute extends CActiveRecord
 		return array(
 			'id_attribute' => 'Id Attribute',
 			'id_block' => 'Id Block',
-			'name' => 'Name',
-			'type' => 'Type',
+			'name' => 'Поле в таблице',
+			'type' => 'Тип поля',
 		);
 	}
 

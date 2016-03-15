@@ -5,9 +5,8 @@
  *
  * The followings are the available columns in table 'header':
  * @property integer $id_header
- * @property string $email
- * @property string $text
  * @property integer $phone
+ * @property string $site_name
  */
 class Header extends CActiveRecord
 {
@@ -28,11 +27,10 @@ class Header extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('phone', 'numerical', 'integerOnly'=>true),
-			array('email', 'length', 'max'=>255),
-			array('text', 'safe'),
+			array('site_name', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_header, email, text, phone', 'safe', 'on'=>'search'),
+			array('id_header, phone, site_name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,9 +52,8 @@ class Header extends CActiveRecord
 	{
 		return array(
 			'id_header' => 'Id Header',
-			'email' => 'Email',
-			'text' => 'Text',
 			'phone' => 'Phone',
+			'site_name' => 'Site Name',
 		);
 	}
 
@@ -79,9 +76,8 @@ class Header extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id_header',$this->id_header);
-		$criteria->compare('email',$this->email,true);
-		$criteria->compare('text',$this->text,true);
 		$criteria->compare('phone',$this->phone);
+		$criteria->compare('site_name',$this->site_name,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

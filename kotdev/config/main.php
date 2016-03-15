@@ -1,5 +1,5 @@
 <?php
-Yii::setPathOfAlias('kotdev', realpath(dirname(__FILE__).'/../..'));
+Yii::setPathOfAlias('kotdev', dirname(__FILE__).'/..');
 Yii::setPathOfAlias('project', dirname(__FILE__).'/../../protected');
 $kotdevConfig = array(
     //'basePath' => dirname(__FILE__) . '/../../protected',
@@ -31,6 +31,8 @@ $kotdevConfig = array(
             'allowAutoLogin' => true,
         ],
 
+        'db' => require(dirname(__FILE__).'/../../protected/config/database.php'),
+
         'clientScript' => array(
             'corePackages' => require dirname(__FILE__).DIRECTORY_SEPARATOR.'packages.php',
         ),
@@ -60,8 +62,4 @@ $kotdevConfig = array(
 
     ),
 );
-
-$projectConfig = require(dirname(__FILE__).'/../../protected/config/main.php');
-//print_r($kotdevConfig);
-//exit;
-return CMap::mergeArray($projectConfig, $kotdevConfig);
+return $kotdevConfig;

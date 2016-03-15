@@ -28,7 +28,7 @@ class AdmBlock extends CActiveRecord
     public function rules()
     {
         return array(
-            array('name, model, multiple, visible, table_name', 'required'),
+            array('name, model, multiple, visible, table_name, widget', 'required'),
             array('sequence, multiple, visible', 'numerical', 'integerOnly' => true),
             array('name, model, table_name', 'length', 'max' => 255),
         );
@@ -57,6 +57,7 @@ class AdmBlock extends CActiveRecord
             'multiple' => 'Множественный блок',
             'visible' => 'Видимость',
             'table_name' => 'Таблица в БД',
+            'widget' => 'Путь до виджета',
         );
     }
 

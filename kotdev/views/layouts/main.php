@@ -40,7 +40,7 @@
 <div class="container-fluid">
     <div class="col-xs-3">
         <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-            <li class="active"><a href="javascript:void(0)">Home</a></li>
+            <li><?= CHtml::link('Блоки', Yii::app()->createUrl('block/index')); ?></li>
             <li><a href="javascript:void(0)">Profile</a></li>
             <li class="disabled"><a href="javascript:void(0)">Disabled</a></li>
         </ul>

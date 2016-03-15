@@ -32,6 +32,12 @@
         <?= $form->error($admBlock, 'table_name'); ?>
         <p class="help-block">Например: tbl_contact</p>
     </div>
+    <div class="form-group label-floating">
+        <?= $form->labelEx($admBlock, 'widget', ['class' => 'control-label']); ?>
+        <?= $form->textField($admBlock, 'widget', ['class' => 'form-control']); ?>
+        <?= $form->error($admBlock, 'widget'); ?>
+        <p class="help-block">Например: application.widgets.contact.ContactWidget</p>
+    </div>
     <div class="form-group">
         <div class="togglebutton">
             <label>

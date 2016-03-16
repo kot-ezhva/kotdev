@@ -12,6 +12,7 @@ class m160316_084132_create_adm_block_table extends CDbMigration
 			'multiple' => 'integer',
 			'visible' => 'integer',
 			'table_name' => 'string NOT NULL',
+			'widget' => 'string NOT NULL',
 		]);
 	}
 

@@ -8,7 +8,7 @@ $kotdevConfig = array(
     'defaultController' => 'block',
 
     // preloading 'log' component
-    'preload' => array('log'),
+    //'preload' => array('log'),
 
     // autoloading model and component classes
     'import' => [
@@ -34,8 +34,8 @@ $kotdevConfig = array(
         'db' => require(dirname(__FILE__).'/../../protected/config/database.php'),
 
         'assetManager' => [
-            'basePath' => dirname(__FILE__).'/../../assets/kotdev',
-            'baseUrl' => '/assets/kotdev',
+            'basePath' => dirname(__FILE__).'/../../assets',
+            'baseUrl' => '/assets',
         ],
 
         'clientScript' => array(
@@ -64,7 +64,7 @@ $kotdevConfig = array(
             ],
         ],
 
-        'log' => array(
+        /*'log' => array(
             'class' => 'CLogRouter',
             'routes' => array(
                 array(
@@ -76,7 +76,7 @@ $kotdevConfig = array(
                     'class'=>'CWebLogRoute',
                 ),
             ),
-        ),
+        ),*/
 
     ),
 );

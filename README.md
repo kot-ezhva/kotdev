@@ -1,7 +1,7 @@
 # kotdev
 Engine for LandingPage's
 
-Install: (h2)
+Install:
 -------------------------------------------
 **1.** Clone repo
 

@@ -7,6 +7,7 @@ class m160316_154143_create_site_settings_table extends CDbMigration
 		$this->createTable('adm_site_settings', [
 			'id_settings' => 'pk',
 			'name' => 'string NOT NULL',
+			'name_for_user' => 'string NOT NULL',
 			'value' => 'string NOT NULL',
 			'description' => 'text',
 		]);

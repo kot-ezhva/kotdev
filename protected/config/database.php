@@ -1,7 +1,7 @@
 <?php
 
 return [
-	'connectionString' => 'mysql:host=localhost;dbname=meteoryiit',
+	'connectionString' => 'mysql:host=localhost;dbname=lp',
 	'emulatePrepare' => true,
 	'username' => 'root',
 	'password' => 'root',

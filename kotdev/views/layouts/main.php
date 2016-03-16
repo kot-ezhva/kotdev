@@ -41,12 +41,15 @@
     <div class="col-xs-3">
         <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
             <li><?= CHtml::link('Блоки', Yii::app()->createUrl('block/index')); ?></li>
+            <li><?= CHtml::link('Настройки', Yii::app()->createUrl('settings/index')); ?></li>
             <li><a href="javascript:void(0)">Profile</a></li>
             <li class="disabled"><a href="javascript:void(0)">Disabled</a></li>
         </ul>
     </div>
     <div class="col-xs-9 b-content">
-        <?= $content; ?>
+        <div class="row">
+            <?= $content; ?>
+        </div>
     </div>
 
 

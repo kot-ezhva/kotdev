@@ -70,4 +70,15 @@ class BlockController extends Controller
             'block' => $block,
         ]);
     }
+
+    public function actionDelete($id)
+    {
+        $block = AdmBlock::model()->findByPk($id);
+        $table = $block->table_name;
+        if($block->delete()){
+            $command = Yii::app()->db->createCommand();
+            $command->dropTable($table);
+        }
+        $this->redirect($this->createUrl('block/index'));
+    }
 }

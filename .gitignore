@@ -1,4 +1,5 @@
 .idea
 protected/runtime/*
-assets/*
+assets/
 kotdev/runtime/*
+protected/config/database.php

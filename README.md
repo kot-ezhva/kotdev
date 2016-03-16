@@ -5,6 +5,6 @@ Install:
 -------------------------------------------
 **1.** Clone repo. Use command: ```git clone https://github.com/kot-ezhva/kotdev```
 
-**2.** Edit db-config to your base in ```/protected/database.php```
+**2.** Edit db-config to your base in ```/protected/config/database.php```
 
 **3.** Run console command in webroot: ```php kotdev/yiic migrate```

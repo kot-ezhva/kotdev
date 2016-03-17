@@ -112,6 +112,19 @@ class HU {
         if (isset($_POST[$modelClass][$attributeName])) unset($_POST[$modelClass][$attributeName]);
     }
 
+    public static function registerCss($name)
+    {
+        $baseUrl = Yii::app()->baseUrl;
+        $cs = Yii::app()->getClientScript();
+        $filePath = $baseUrl . '/css/' . $name;
+        if(file_exists(Yii::getPathOfAlias('webroot') . $filePath)){
+            $cs->registerCssFile($filePath);
+        }else{
+            throw new Exception('Файл не найден по пути ' . Yii::getPathOfAlias('webroot') . $filePath);
+        }
+
+    }
+
 
 }
 

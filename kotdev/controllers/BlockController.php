@@ -64,7 +64,12 @@ class BlockController extends Controller
         $block = AdmBlock::model()->with('admAttributes')->findByAttributes(['model' => $modelName]);
         if(!$model){
             $model = new $modelName();
+        }elseif (isset($_POST[$modelName])) {
+            $model->attributes = $_POST[$modelName];
+        if ($model->save()) {
+            $this->redirect($this->createUrl('block/index'));
         }
+    }
         $this->render('single_edit', [
             'model' => $model,
             'block' => $block,

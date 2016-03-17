@@ -15,18 +15,27 @@ return array(
         'kotdev.components.*',
     ),
 
-    'modules' => array(
-        'gii' => array(
+    'modules' => [
+        'gii' => [
             'class' => 'system.gii.GiiModule',
             'password' => '123',
-            'ipFilters' => array('127.0.0.1', '::1'),
-        ),
-    ),
+            'ipFilters' => ['127.0.0.1', '::1'],
+        ],
+    ],
 
     'components' => array(
 
         'clientScript' => array(
             'corePackages' => require dirname(__FILE__) . DIRECTORY_SEPARATOR . '../../kotdev/config/packages.php',
+            'class' => 'kotdev.ext.ExtendedClientScript.ExtendedClientScript',
+            'combineCss' => true,
+            'compressCss' => !YII_DEBUG,
+            'combineJs' => true,
+            'compressJs' => !YII_DEBUG,
+            'jsMinPath' => 'kotdev.ext.ExtendedClientScript.jsmin.JSMin',
+            'cssMinPath' => 'kotdev.ext.ExtendedClientScript.cssmin.cssmin',
+
+            'autoRefresh' => !YII_DEBUG,
         ),
 
         'urlManager' => array(

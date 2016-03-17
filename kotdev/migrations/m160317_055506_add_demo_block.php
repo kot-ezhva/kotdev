@@ -10,14 +10,10 @@ class m160317_055506_add_demo_block extends CDbMigration
 			'multiple' => 0,
 			'visible' => 1,
 			'table_name' => 'demo',
-			'widget' => 'string NOT NULL',
+			'widget' => 'application.widgets.demo.DemoWidget',
 		]);
 		$this->createTable('demo', [
-			'id_demo' => 'pk',
-			'phone' => 'string NOT NULL',
-			'name_for_user' => 'string NOT NULL',
-			'value' => 'string NOT NULL',
-			'description' => 'text',
+			'id_demo' => 'pk'
 		]);
 	}
 

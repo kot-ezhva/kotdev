@@ -55,5 +55,6 @@
         </div>
     </div>
 
-<?= CHtml::submitButton('Создать', ['class' => 'btn btn-primary']); ?>
+<?= CHtml::submitButton('Создать', ['class' => 'btn btn-primary pull-right']); ?>
+<?= CHtml::link('Отмена', ['block/index'], ['class' => 'btn btn-default pull-right']); ?>
 <?php $this->endWidget(); ?>

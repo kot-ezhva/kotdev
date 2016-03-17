@@ -29,5 +29,6 @@
     <?= $form->error($admAttribute, 'type'); ?>
 </div>
 
-<?= CHtml::submitButton('Сохранить', ['class' => 'btn btn-primary']); ?>
+<?= CHtml::submitButton('Сохранить', ['class' => 'btn btn-primary pull-right']); ?>
+<?= CHtml::link('Отмена', ['attribute/list', 'id' => $idBlock], ['class' => 'btn btn-default pull-right']); ?>
 <?php $this->endWidget(); ?>

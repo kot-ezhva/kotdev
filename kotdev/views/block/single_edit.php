@@ -43,5 +43,6 @@ $attributes = $block->admAttributes;
         <?= $form->error($model, $key); ?>
     </div>
 <?php endforeach; ?>
-<?= CHtml::submitButton('Сохранить', ['class' => 'btn btn-primary']); ?>
+<?= CHtml::submitButton('Сохранить', ['class' => 'btn btn-primary pull-right']); ?>
+<?= CHtml::link('Отмена', ['block/index'], ['class' => 'btn btn-default pull-right']); ?>
 <?php $this->endWidget(); ?>

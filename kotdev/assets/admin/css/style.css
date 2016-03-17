@@ -9,6 +9,7 @@ body{
 .b-navigation{
     position: fixed;
     background: #616161;
+    background: linear-gradient(to top, #424242, #616161);
     width: 24%;
     left: 0;
     top: 60px;
@@ -64,6 +65,8 @@ body{
     background: #fff;
     padding: 0 15px;
     border: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding-bottom: 60px;
 }
 .b-content .page-header{
     margin: 10px 0 10px;

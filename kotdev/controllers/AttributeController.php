@@ -34,6 +34,7 @@ class AttributeController extends Controller
 		}
 		$this->render('create', [
 			'admAttribute' => $admAttribute,
+			'idBlock' => $idBlock,
 		]);
 	}
 
@@ -64,6 +65,7 @@ class AttributeController extends Controller
 		}
 		$this->render('create', [
 			'admAttribute' => $admAttribute,
+			'idBlock' => $admAttribute->id_block,
 		]);
 	}
 

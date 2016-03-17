@@ -39,5 +39,6 @@
         <p class="help-block">Подсказка для администратора</p>
     </div>
 
-<?= CHtml::submitButton('Сохранить', ['class' => 'btn btn-primary']); ?>
+<?= CHtml::submitButton('Сохранить', ['class' => 'btn btn-primary pull-right']); ?>
+<?= CHtml::link('Отмена', ['settings/index'], ['class' => 'btn btn-default pull-right']); ?>
 <?php $this->endWidget(); ?>

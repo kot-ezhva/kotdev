@@ -10,10 +10,10 @@ Install:
 **3.** /protected/config/database.php:
 ```
 return [
-	'connectionString' => 'mysql:host=localhost;dbname=meteoryiit',
+	'connectionString' => 'mysql:host=localhost;dbname=YOUR_BASE_NAME',
 	'emulatePrepare' => true,
-	'username' => 'root',
-	'password' => 'root',
+	'username' => 'YOUR_BASE_USERNAME',
+	'password' => 'YOUR_BASE_PASSWORD',
 	'charset' => 'utf8',
 ];
 ```

@@ -6,6 +6,9 @@ html, body{
 body{
     padding-top: 60px;
 }
+.navbar-brand{
+    font-size: 2.5em;
+}
 .b-navigation{
     position: fixed;
     background: #616161;

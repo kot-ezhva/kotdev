@@ -15,7 +15,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-inverse" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/kotdev">kotDev</a>
@@ -39,14 +39,14 @@
 </nav>
 <div class="container-fluid">
     <div class="col-xs-3">
-        <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-            <li><?= CHtml::link('Блоки', Yii::app()->createUrl('block/index')); ?></li>
-            <li><?= CHtml::link('Настройки', Yii::app()->createUrl('settings/index')); ?></li>
-            <li><a href="javascript:void(0)">Profile</a></li>
-            <li class="disabled"><a href="javascript:void(0)">Disabled</a></li>
-        </ul>
+        <div class="b-navigation">
+            <ul>
+                <li><?= CHtml::link('<i class="material-icons">apps</i> Блоки', Yii::app()->createUrl('block/index'), ['class' => 'btn btn-default']); ?></li>
+                <li><?= CHtml::link('<i class="material-icons">extension</i> Настройки', Yii::app()->createUrl('settings/index'), ['class' => 'btn btn-default']); ?></li>
+            </ul>
+        </div>
     </div>
-    <div class="col-xs-9 b-content">
+    <div class="col-xs-9 col-xs-offset-3 b-content">
         <div class="row">
             <?= $content; ?>
         </div>

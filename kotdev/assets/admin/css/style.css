@@ -1,6 +1,40 @@
-.b-sidebar{
-    min-height: 100%;
-    background: #555555;
+html, body{
+    height: 100%;
+    background-color: #E0E0E0;
+    background: linear-gradient(to top right, #BDBDBD, #E0E0E0);
+}
+body{
+    padding-top: 60px;
+}
+.b-navigation{
+    position: fixed;
+    background: #616161;
+    width: 24%;
+    left: 0;
+    top: 60px;
+    height: 100%;
+}
+.b-navigation ul{
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.b-navigation li{
+    border-bottom: 1px solid #757575;
+}
+.b-navigation li > a{
+    width: 100%;
+    margin: 0;
+    color: #fff!important;
+    font-size: 1.2em;
+    text-transform: none;
+    font-weight: 300;
+    text-align: left;
+    padding: 15px 15px;
+}
+.b-navigation li > a > i{
+    margin: -5px 6px 0 0;
 }
 .b-block .item{
     background: #fff;
@@ -32,7 +66,8 @@
     border: 1px solid #ddd;
 }
 .b-content .page-header{
-    margin: 0 0 10px;
+    margin: 10px 0 10px;
+    border: none;
 }
 .b-content .page-header > h1{
     font-size: 4em;
@@ -44,12 +79,24 @@
 .b-actions h1{
     margin: 10px 0;
 }
+.b-actions a.btn{
+    box-shadow: none!important;
+    -webkit-box-shadow: none!important;
+    border-radius: 0;
+}
 .panel{
     margin-bottom: 10px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    border-radius: 0;
 }
 .panel-body{
     padding: 15px 0;
 }
 .panel-body .col-xs-5, .panel-body .col-xs-9{
-    padding-top: 5px;
+    padding-top: 4px;
+    font-size: 1.2em;
+}
+.panel-body .material-icons{
+    font-size: 2em;
 }

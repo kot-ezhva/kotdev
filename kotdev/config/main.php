@@ -5,7 +5,7 @@ $kotdevConfig = array(
     //'basePath' => dirname(__FILE__) . '/../../protected',
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '../',
     'language' => 'ru',
-    'defaultController' => 'block',
+    'defaultController' => 'block/index',
 
     // preloading 'log' component
     //'preload' => array('log'),
@@ -28,7 +28,8 @@ $kotdevConfig = array(
     'components' => array(
 
         'user' => [
-            'allowAutoLogin' => true,
+            'allowAutoLogin' => false,
+            'loginUrl' => 'user/login',
         ],
 
         'db' => require(dirname(__FILE__).'/../../protected/config/database.php'),

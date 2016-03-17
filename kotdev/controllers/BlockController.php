@@ -2,6 +2,27 @@
 
 class BlockController extends Controller
 {
+    public function filters()
+    {
+        return array(
+            'accessControl',
+        );
+    }
+
+    public function accessRules()
+    {
+        return array(
+            array('deny',
+                'actions'=>array('index', 'create', 'setvisible', 'edit', 'sedit', 'delete'),
+                'users'=>array('?'),
+            ),
+            array('deny',
+                'actions'=>array('*'),
+                'users'=>array('*'),
+            ),
+        );
+    }
+
     public function actionIndex()
     {
         $blocks = AdmBlock::model()->findAll();
@@ -44,7 +65,7 @@ class BlockController extends Controller
             }
             $block->update();
         }
-        $this->actionMain();
+        $this->actionIndex();
     }
 
     public function actionEdit($id)

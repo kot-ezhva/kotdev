@@ -2,6 +2,27 @@
 
 class SettingsController extends Controller
 {
+    public function filters()
+    {
+        return array(
+            'accessControl',
+        );
+    }
+
+    public function accessRules()
+    {
+        return array(
+            array('deny',
+                'actions'=>array('index', 'create', 'edit', 'delete'),
+                'users'=>array('?'),
+            ),
+            array('deny',
+                'actions'=>array('*'),
+                'users'=>array('*'),
+            ),
+        );
+    }
+
     public function actionIndex()
     {
         $criteria = new CDbCriteria();

@@ -25,17 +25,17 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Андрей <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <?= Yii::app()->user->name ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/">Перейти на сайт</a></li>
                         <li><a href="#">Изменить профиль</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Выйти</a></li>
+                        <li><?= CHtml::link('Выйти', ['user/logout']) ?></li>
                     </ul>
                 </li>
             </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+        </div>
+    </div>
 </nav>
 <div class="container-fluid">
     <div class="col-xs-3">

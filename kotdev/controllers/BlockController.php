@@ -13,7 +13,7 @@ class BlockController extends Controller
     {
         return array(
             array('deny',
-                'actions'=>array('index', 'create', 'setvisible', 'edit', 'sedit', 'delete'),
+                'actions'=>array('index', 'create', 'setvisible', 'edit', 'sedit', 'delete, setsqeuence'),
                 'users'=>array('?'),
             ),
             array('deny',
@@ -25,7 +25,9 @@ class BlockController extends Controller
 
     public function actionIndex()
     {
-        $blocks = AdmBlock::model()->findAll();
+        $cr = new CDbCriteria();
+        $cr->order = "sequence ASC";
+        $blocks = AdmBlock::model()->findAll($cr);
         $this->render('main', [
             'blocks' => $blocks,
         ]);
@@ -106,5 +108,17 @@ class BlockController extends Controller
             $command->dropTable($table);
         }
         $this->redirect($this->createUrl('block/index'));
+    }
+
+    public function actionSetSequence()
+    {
+        if(isset($_POST['block'])){
+            $postsIds = $_POST['block'];
+            foreach($postsIds as $seq => $id){
+                $block = AdmBlock::model()->findByPk($id);
+                $block->sequence = $seq;
+                $block->update();
+            }
+        }
     }
 }

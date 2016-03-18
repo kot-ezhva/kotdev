@@ -8,6 +8,10 @@ $packages['jquery'] = [
     'basePath' => 'kotdev.assets.jquery.js',
     'js' => ['jquery.min.js'],
 ];
+$packages['jquery.ui'] = [
+    'basePath' => 'kotdev.assets.jquery.js',
+    'js' => ['jquery-ui.js'],
+];
 $packages['bootstrap.css'] = [
     'basePath' => 'kotdev.assets.bootstrap.css',
     'css' => ['bootstrap.min.css'],

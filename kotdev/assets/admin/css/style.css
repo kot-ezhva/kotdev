@@ -2,6 +2,7 @@ html, body{
     height: 100%;
     background-color: #E0E0E0;
     background: linear-gradient(to top right, #BDBDBD, #E0E0E0);
+    background-attachment: fixed;
 }
 body{
     padding-top: 60px;

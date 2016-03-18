@@ -18,12 +18,12 @@
         </div>
     </div>
 </div>
-
-<div class="b-block col-xs-12">
+<div class="b-block col-xs-12" id="sortable-blocks">
     <?php foreach ($blocks as $block) : ?>
-        <div class="panel panel-default row">
+        <div class="panel panel-default row" id="block-<?= $block->primaryKey ?>">
             <div class="panel-body">
                 <div class="col-xs-9">
+                    <i class="material-icons">open_with</i>
                     <?= 'Блок "' . $block->name . '"' ?>
                 </div>
                 <div class="col-xs-3 text-right">
@@ -35,7 +35,7 @@
                         ]
                     );
 
-                    if($block->visible){
+                    if ($block->visible) {
                         echo CHtml::link(
                             '<i class="material-icons">visibility</i>',
                             [
@@ -44,7 +44,7 @@
                                 'vis' => true
                             ]
                         );
-                    }else{
+                    } else {
                         echo CHtml::link(
                             '<i class="material-icons">visibility_off</i>',
                             [
@@ -53,7 +53,7 @@
                                 'vis' => false
                             ]
                         );
-                    }?>
+                    } ?>
                     <?= CHtml::link(
                         '<i class="material-icons">list</i>',
                         [
@@ -73,3 +73,23 @@
         </div>
     <?php endforeach; ?>
 </div>
+<div class="response">
+
+</div>
+
+<script>
+    var blocksContainer = $("#sortable-blocks");
+    blocksContainer.sortable({
+        axis: 'y',
+        stop: function (event, ui) {
+            var data = $(this).sortable('serialize');
+            //$('.response').text(oData);
+            $.ajax({
+                data: data,
+                type: 'POST',
+                url: "<?= Yii::app()->createUrl('block/setsequence') ?>"
+            });
+        }
+    });
+    blocksContainer.disableSelection();
+</script>

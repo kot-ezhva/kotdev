@@ -28,7 +28,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <?= Yii::app()->user->name ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/">Перейти на сайт</a></li>
+                        <li><?= CHtml::link('Перейти на сайт', ['../'], ['target' => '_blank']) ?></li>
                         <li><a href="#">Изменить профиль</a></li>
                         <li class="divider"></li>
                         <li><?= CHtml::link('Выйти', ['user/logout']) ?></li>

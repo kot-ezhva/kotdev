@@ -12,7 +12,7 @@
 	<?php Yii::app()->clientScript->registerMetaTag(HU::getSettings('keywords'), 'keywords'); ?>
 	<?php Yii::app()->clientScript->registerMetaTag(HU::getSettings('description'), 'description'); ?>
 
-	<title><?= CHtml::encode($this->pageTitle); ?></title>
+	<title><?= HU::getSettings('title') ?></title>
 </head>
 
 <body>

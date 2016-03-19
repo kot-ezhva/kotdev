@@ -36,7 +36,7 @@ class UserController extends Controller
                 $user->password = $curPass;
             }
             $user->save();
-            $this->redirect($this->createUrl('block/index'));
+            $this->redirect($this->createUrl('dashboard/index'));
         }
         $this->render('edit', [
             'user' => $user

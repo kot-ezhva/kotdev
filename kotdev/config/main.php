@@ -5,7 +5,7 @@ $kotdevConfig = array(
     //'basePath' => dirname(__FILE__) . '/../../protected',
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '../',
     'language' => 'ru',
-    'defaultController' => 'block/index',
+    'defaultController' => 'dashboard/index',
 
     // preloading 'log' component
     //'preload' => array('log'),

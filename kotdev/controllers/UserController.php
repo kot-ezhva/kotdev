@@ -3,13 +3,40 @@ class UserController extends Controller
 {
     public $layout = "login";
 
+    public function filters()
+    {
+        return array(
+            'accessControl',
+        );
+    }
+
+    public function accessRules()
+    {
+        return [
+            [
+                'allow',
+                'actions' => ['edit', 'logout'],
+                'users' => ['@'],
+            ],
+            [
+                'allow',
+                'actions' => ['login'],
+                'users' => ['?'],
+            ],
+            [
+                'deny',
+                'users' => ['*'],
+            ],
+        ];
+    }
+
     public function actionLogin()
     {
         if(isset($_POST['username']) && isset($_POST['password'])){
             $identity=new UserIdentity($_POST['username'], $_POST['password']);
             if($identity->authenticate()){
                 Yii::app()->user->login($identity);
-                $this->redirect($this->createUrl('block/index'));
+                $this->redirect(Yii::app()->user->returnUrl);
             }else echo $identity->errorMessage;
         }
         $this->render('login');

@@ -11,16 +11,17 @@ class AttributeController extends Controller
 
 	public function accessRules()
 	{
-		return array(
-			array('deny',
-				'actions'=>array('list', 'add', 'remove', 'edit'),
-				'users'=>array('?'),
-			),
-			array('deny',
-				'actions'=>array('*'),
-				'users'=>array('*'),
-			),
-		);
+		return [
+			[
+				'allow',
+				'actions' => ['list', 'add', 'remove', 'edit'],
+				'users' => ['@'],
+			],
+			[
+				'deny',
+				'users' => ['*'],
+			],
+		];
 	}
 
 	public function actionList($id)

@@ -29,7 +29,7 @@ $kotdevConfig = array(
 
         'user' => [
             'allowAutoLogin' => false,
-            'loginUrl' => 'user/login',
+            'loginUrl' => '/kotdev/user/login',
         ],
 
         'db' => require(dirname(__FILE__).'/../../protected/config/database.php'),

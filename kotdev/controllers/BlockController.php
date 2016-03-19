@@ -11,16 +11,17 @@ class BlockController extends Controller
 
     public function accessRules()
     {
-        return array(
-            array('deny',
-                'actions'=>array('index', 'create', 'setvisible', 'edit', 'sedit', 'delete, setsqeuence'),
-                'users'=>array('?'),
-            ),
-            array('deny',
-                'actions'=>array('*'),
-                'users'=>array('*'),
-            ),
-        );
+        return [
+            [
+                'allow',
+                'actions' => ['index', 'create', 'setvisible', 'edit', 'sedit', 'delete', 'setsequence'],
+                'users' => ['@'],
+            ],
+            [
+                'deny',
+                'users' => ['*'],
+            ],
+        ];
     }
 
     public function actionIndex()
@@ -85,14 +86,14 @@ class BlockController extends Controller
     {
         $model = CActiveRecord::model($modelName)->find();
         $block = AdmBlock::model()->with('admAttributes')->findByAttributes(['model' => $modelName]);
-        if(!$model){
+        if (!$model) {
             $model = new $modelName();
-        }elseif (isset($_POST[$modelName])) {
+        } elseif (isset($_POST[$modelName])) {
             $model->attributes = $_POST[$modelName];
-        if ($model->save()) {
-            $this->redirect($this->createUrl('block/index'));
+            if ($model->save()) {
+                $this->redirect($this->createUrl('block/index'));
+            }
         }
-    }
         $this->render('single_edit', [
             'model' => $model,
             'block' => $block,
@@ -103,7 +104,7 @@ class BlockController extends Controller
     {
         $block = AdmBlock::model()->findByPk($id);
         $table = $block->table_name;
-        if($block->delete()){
+        if ($block->delete()) {
             $command = Yii::app()->db->createCommand();
             $command->dropTable($table);
         }
@@ -112,9 +113,9 @@ class BlockController extends Controller
 
     public function actionSetSequence()
     {
-        if(isset($_POST['block'])){
+        if (isset($_POST['block'])) {
             $postsIds = $_POST['block'];
-            foreach($postsIds as $seq => $id){
+            foreach ($postsIds as $seq => $id) {
                 $block = AdmBlock::model()->findByPk($id);
                 $block->sequence = $seq;
                 $block->update();

@@ -11,16 +11,17 @@ class SettingsController extends Controller
 
     public function accessRules()
     {
-        return array(
-            array('deny',
-                'actions'=>array('index', 'create', 'edit', 'delete'),
-                'users'=>array('?'),
-            ),
-            array('deny',
-                'actions'=>array('*'),
-                'users'=>array('*'),
-            ),
-        );
+        return [
+            [
+                'allow',
+                'actions' => ['index', 'create', 'edit', 'delete'],
+                'users' => ['@'],
+            ],
+            [
+                'deny',
+                'users' => ['*'],
+            ],
+        ];
     }
 
     public function actionIndex()

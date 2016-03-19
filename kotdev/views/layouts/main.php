@@ -40,7 +40,7 @@
     <div class="col-xs-3">
         <div class="b-navigation">
             <ul>
-                <li><?= CHtml::link('<i class="material-icons">dashboard</i> Панель приборов', Yii::app()->createUrl('dashboard/index'), ['class' => 'btn btn-default']); ?></li>
+                <li><?= CHtml::link('<i class="material-icons">dashboard</i> Доска', Yii::app()->createUrl('dashboard/index'), ['class' => 'btn btn-default']); ?></li>
                 <li><?= CHtml::link('<i class="material-icons">view_agenda</i> Блоки', Yii::app()->createUrl('block/index'), ['class' => 'btn btn-default']); ?></li>
                 <li><?= CHtml::link('<i class="material-icons">extension</i> Настройки', Yii::app()->createUrl('settings/index'), ['class' => 'btn btn-default']); ?></li>
             </ul>

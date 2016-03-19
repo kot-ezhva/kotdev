@@ -4,7 +4,7 @@
  */
 ?>
 <div class="page-header">
-    <h1>Создать свойство блока</h1>
+    <h1>Свойство блока</h1>
 </div>
 <?php $form = $this->beginWidget('CActiveForm', [
     'id' => 'edit-form',

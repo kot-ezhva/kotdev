@@ -128,5 +128,5 @@ body{
     position: relative;
     top: 10px;
     margin-right: 5px;
-    cursor: pointer;
+    cursor: move;
 }

@@ -9,6 +9,8 @@
 	<?php HU::registerCss('main.css') ?>
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700&subset=latin,cyrillic">
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+	<?php Yii::app()->clientScript->registerMetaTag(HU::getSettings('keywords'), 'keywords'); ?>
+	<?php Yii::app()->clientScript->registerMetaTag(HU::getSettings('description'), 'description'); ?>
 
 	<title><?= CHtml::encode($this->pageTitle); ?></title>
 </head>

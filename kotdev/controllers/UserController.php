@@ -20,4 +20,26 @@ class UserController extends Controller
         Yii::app()->user->logout();
         $this->redirect(Yii::app()->user->returnUrl);
     }
+
+    public function actionEdit()
+    {
+        $this->layout = '';
+        $user = User::model()->findByPk(Yii::app()->user->id);
+        $curPass = $user->password;
+        $user->password = "";
+        if(isset($_POST['User'])){
+            $user->attributes = $_POST['User'];
+            if($_POST['User']['password']){
+                $user->password = CPasswordHelper::hashPassword($_POST['User']['password']);
+            }
+            if($user->password == ""){
+                $user->password = $curPass;
+            }
+            $user->save();
+            $this->redirect($this->createUrl('block/index'));
+        }
+        $this->render('edit', [
+            'user' => $user
+        ]);
+    }
 }

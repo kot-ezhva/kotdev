@@ -125,6 +125,15 @@ class HU {
 
     }
 
+    public static function getSettings($name)
+    {
+        $set = AdmSiteSettings::model()->findByAttributes([
+            'name' => $name,
+        ]);
+        return $set->value;
+    }
+
+
 
 }
 

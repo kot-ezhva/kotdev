@@ -73,9 +73,6 @@
         </div>
     <?php endforeach; ?>
 </div>
-<div class="response">
-
-</div>
 
 <script>
     var blocksContainer = $("#sortable-blocks");

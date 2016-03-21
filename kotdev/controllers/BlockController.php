@@ -2,7 +2,7 @@
 
 class BlockController extends Controller
 {
-    public function filters()
+    /*public function filters()
     {
         return array(
             'accessControl',
@@ -14,7 +14,14 @@ class BlockController extends Controller
         return [
             [
                 'allow',
-                'actions' => ['index', 'create', 'setvisible', 'edit', 'sedit', 'delete', 'setsequence'],
+                'actions' => [
+                    'index',
+                    'create',
+                    'setvisible',
+                    'edit', 'sedit',
+                    'delete',
+                    'setsequence'
+                ],
                 'users' => ['@'],
             ],
             [
@@ -22,7 +29,7 @@ class BlockController extends Controller
                 'users' => ['*'],
             ],
         ];
-    }
+    }*/
 
     public function actionIndex()
     {
@@ -76,10 +83,26 @@ class BlockController extends Controller
         $block = AdmBlock::model()->findByPk($id);
         $modelName = $block->model;
         if ($block->multiple) {
-            $model = CActiveRecord::model($modelName)->findAll();
+            $this->multipleEdit($modelName);
         } else {
             $this->actionSEdit($modelName);
         }
+    }
+
+    public function multipleEdit($modelName)
+    {
+        $models = CActiveRecord::model($modelName)->findAll();
+        $block = AdmBlock::model()->findByAttributes(['model' => $modelName]);
+        $this->render('multiple_edit', [
+            'models' => $models,
+            'block' => $block,
+        ]);
+    }
+
+    public function actionMEdit($id, $modelName)
+    {
+        $model = CActiveRecord::model($modelName)->findByPk($id);
+        HU::dump($model);
     }
 
     public function actionSEdit($modelName)

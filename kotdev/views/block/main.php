@@ -27,15 +27,29 @@
                     <?= 'Блок "' . $block->name . '"' ?>
                 </div>
                 <div class="col-xs-3 text-right">
-                    <?= CHtml::link(
-                        '<i class="material-icons">mode_edit</i>',
-                        [
-                            'block/edit',
-                            'id' => $block->primaryKey,
-                        ]
-                    );
+                    <?php if($block->multiple) : ?>
+                        <?= CHtml::link(
+                            '<i class="material-icons">mode_edit</i>',
+                            [
+                                'block/recordlist',
+                                'modelName' => $block->model,
+                            ]
+                        ); ?>
 
-                    if ($block->visible) {
+                    <?php else : ?>
+
+                        <?= CHtml::link(
+                            '<i class="material-icons">mode_edit</i>',
+                            [
+                                'block/edit',
+                                'modelName' => $block->model,
+                            ]
+                        ); ?>
+
+                    <?php endif; ?>
+
+
+                    <?php if ($block->visible) {
                         echo CHtml::link(
                             '<i class="material-icons">visibility</i>',
                             [

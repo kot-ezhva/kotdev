@@ -20,7 +20,7 @@ $attributes = $block->admAttributes;
 <?php foreach ($model as $key => $value) : ?>
     <?php if ($key == $pk) continue; ?>
     <?php $type = AdmAttribute::getType($block->primaryKey, $key); ?>
-    <div class="form-group">
+    <div class="form-group label-floating">
         <?= $form->labelEx($model, $key, ['class' => 'control-label']); ?>
         <?php
         switch($type){

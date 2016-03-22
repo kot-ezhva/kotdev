@@ -7,7 +7,7 @@
         </div>
         <div class="col-xs-5 text-right">
             <div class="row">
-                <?= CHtml::link('Создать', ['block/create'], ['class' => 'btn btn-raised btn-success']) ?>
+                <?= CHtml::link('Создать', ['block/recordcreate', 'modelName' => $block->model], ['class' => 'btn btn-raised btn-success']) ?>
             </div>
         </div>
     </div>
@@ -17,15 +17,21 @@
         <div class="panel panel-default row">
             <div class="panel-body">
                 <div class="col-xs-9">
-                    <?= $item->primaryKey ?>
+                    <?php $i = 0; ?>
+                    <?php foreach($item as $key => $val) : ?>
+                        <?php
+                        $i++;
+                        if($i == 2) echo $val;
+                        ?>
+                    <?php endforeach; ?>
                 </div>
                 <div class="col-xs-3 text-right">
                     <?= CHtml::link(
                         '<i class="material-icons">mode_edit</i>',
                         [
-                            'block/medit',
-                            'id' => $item->primaryKey,
+                            'block/recordedit',
                             'modelName' => $block->model,
+                            'id' => $item->primaryKey,
                         ]
                     );
                     ?>
@@ -33,8 +39,9 @@
                     <?= CHtml::link(
                         '<i class="material-icons">delete</i>',
                         [
-                            'block/delete',
+                            'block/recorddelete',
                             'id' => $item->primaryKey,
+                            'modelName' => $block->model,
                         ]
                     ); ?>
                 </div>

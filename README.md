@@ -19,3 +19,5 @@ return [
 ```
 
 **4.** Run console command in webroot: ```php kotdev/yiic migrate```
+
+**5.** login in: ```http://example.com/kotdev``` Use default login: ```admin``` and password ```admin```

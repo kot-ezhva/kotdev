@@ -2,7 +2,7 @@
 
 class BlockController extends Controller
 {
-    /*public function filters()
+    public function filters()
     {
         return array(
             'accessControl',
@@ -18,9 +18,13 @@ class BlockController extends Controller
                     'index',
                     'create',
                     'setvisible',
-                    'edit', 'sedit',
+                    'edit',
                     'delete',
-                    'setsequence'
+                    'setsequence',
+                    'recordlist',
+                    'recordedit',
+                    'recorddelete',
+                    'recordcreate',
                 ],
                 'users' => ['@'],
             ],
@@ -29,7 +33,7 @@ class BlockController extends Controller
                 'users' => ['*'],
             ],
         ];
-    }*/
+    }
 
     public function actionIndex()
     {
@@ -78,34 +82,7 @@ class BlockController extends Controller
         $this->actionIndex();
     }
 
-    public function actionEdit($id)
-    {
-        $block = AdmBlock::model()->findByPk($id);
-        $modelName = $block->model;
-        if ($block->multiple) {
-            $this->multipleEdit($modelName);
-        } else {
-            $this->actionSEdit($modelName);
-        }
-    }
-
-    public function multipleEdit($modelName)
-    {
-        $models = CActiveRecord::model($modelName)->findAll();
-        $block = AdmBlock::model()->findByAttributes(['model' => $modelName]);
-        $this->render('multiple_edit', [
-            'models' => $models,
-            'block' => $block,
-        ]);
-    }
-
-    public function actionMEdit($id, $modelName)
-    {
-        $model = CActiveRecord::model($modelName)->findByPk($id);
-        HU::dump($model);
-    }
-
-    public function actionSEdit($modelName)
+    public function actionEdit($modelName)
     {
         $model = CActiveRecord::model($modelName)->find();
         $block = AdmBlock::model()->with('admAttributes')->findByAttributes(['model' => $modelName]);
@@ -117,7 +94,7 @@ class BlockController extends Controller
                 $this->redirect($this->createUrl('block/index'));
             }
         }
-        $this->render('single_edit', [
+        $this->render('edit', [
             'model' => $model,
             'block' => $block,
         ]);
@@ -132,6 +109,64 @@ class BlockController extends Controller
             $command->dropTable($table);
         }
         $this->redirect($this->createUrl('block/index'));
+    }
+
+    public function actionRecordList($modelName)
+    {
+        $recordsExists = CActiveRecord::model($modelName)->find();
+        $cr = new CDbCriteria();
+        if($recordsExists){
+            $pk = $recordsExists->getTableSchema()->primaryKey;
+            $cr->order = $pk . ' DESC';
+        }
+        $models = CActiveRecord::model($modelName)->findAll($cr);
+        $block = AdmBlock::model()->findByAttributes(['model' => $modelName]);
+        $this->render('record_list', [
+            'models' => $models,
+            'block' => $block,
+        ]);
+
+    }
+
+    public function actionRecordEdit($id, $modelName)
+    {
+        $model = CActiveRecord::model($modelName)->findByPk($id);
+        if($model){
+            $block = AdmBlock::model()->with('admAttributes')->findByAttributes(['model' => $modelName]);
+            if (isset($_POST[$modelName])) {
+                $model->attributes = $_POST[$modelName];
+                if ($model->save()) {
+                    $this->redirect($this->createUrl('block/recordlist', ['modelName' => $modelName]));
+                }
+            }
+            $this->render('edit', [
+                'model' => $model,
+                'block' => $block,
+            ]);
+        }
+    }
+
+    public function actionRecordCreate($modelName)
+    {
+        $model = new $modelName();
+        $block = AdmBlock::model()->with('admAttributes')->findByAttributes(['model' => $modelName]);
+        if (isset($_POST[$modelName])) {
+            $model->attributes = $_POST[$modelName];
+            if ($model->save()) {
+                $this->redirect($this->createUrl('block/recordlist', ['modelName' => $modelName]));
+            }
+        }
+        $this->render('edit', [
+            'model' => $model,
+            'block' => $block,
+        ]);
+    }
+
+    public function actionRecordDelete($id, $modelName)
+    {
+        $model = CActiveRecord::model($modelName)->findByPk($id);
+        $model->delete();
+        $this->redirect($this->createUrl('block/recordlist', ['modelName' => $modelName]));
     }
 
     public function actionSetSequence()

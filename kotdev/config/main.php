@@ -1,8 +1,9 @@
 <?php
+
 Yii::setPathOfAlias('kotdev', dirname(__FILE__).'/..');
 Yii::setPathOfAlias('project', dirname(__FILE__).'/../../protected');
+
 $kotdevConfig = array(
-    //'basePath' => dirname(__FILE__) . '/../../protected',
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '../',
     'language' => 'ru',
     'defaultController' => 'dashboard/index',

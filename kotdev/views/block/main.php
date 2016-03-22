@@ -13,7 +13,9 @@
         </div>
         <div class="col-xs-5 text-right">
             <div class="row">
-                <?= CHtml::link('Создать', ['block/create'], ['class' => 'btn btn-raised btn-success']) ?>
+                <?php if(User::isDev()) : ?>
+                    <?= CHtml::link('Создать', ['block/create'], ['class' => 'btn btn-raised btn-success']) ?>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -68,20 +70,22 @@
                             ]
                         );
                     } ?>
-                    <?= CHtml::link(
-                        '<i class="material-icons">list</i>',
-                        [
-                            'attribute/list',
-                            'id' => $block->primaryKey,
-                        ]
-                    ); ?>
-                    <?= CHtml::link(
-                        '<i class="material-icons">delete</i>',
-                        [
-                            'block/delete',
-                            'id' => $block->primaryKey,
-                        ]
-                    ); ?>
+                    <?php if(User::isDev()) : ?>
+                        <?= CHtml::link(
+                            '<i class="material-icons">list</i>',
+                            [
+                                'attribute/list',
+                                'id' => $block->primaryKey,
+                            ]
+                        ); ?>
+                        <?= CHtml::link(
+                            '<i class="material-icons">delete</i>',
+                            [
+                                'block/delete',
+                                'id' => $block->primaryKey,
+                            ]
+                        ); ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

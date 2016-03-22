@@ -40,6 +40,7 @@ class User extends CActiveRecord
             'username' => 'Логин',
             'password' => 'Пароль',
             'name' => 'Имя пользователя',
+            'role' => 'Уровень доступа',
         );
     }
 
@@ -52,5 +53,13 @@ class User extends CActiveRecord
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
+    }
+
+    public static function isDev()
+    {
+        if(Yii::app()->user->role == 'dev'){
+            return true;
+        }
+        return false;
     }
 }
